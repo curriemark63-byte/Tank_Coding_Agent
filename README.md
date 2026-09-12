@@ -50,3 +50,7 @@ solid but benefits from very direct, unambiguous prompting rather than
 natural, loosely-worded requests. This will inform how Tank's system 
 prompt and any future fine-tuning are approached before it's built out 
 into a full coding agent.
+
+## Road map 
+
+Agentic capabilities soon.

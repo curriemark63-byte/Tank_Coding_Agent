@@ -16,10 +16,10 @@ of Tank's raw coding capability before wrapping it in agent tooling.
 
 ## Test Methodology
 
-Three tests, run as a progression of increasing complexity, all built around 
-a single realistic scenario — an aircraft fuel pressure transducer:
+Three tests, run as a progression of increasing complexity:
 
-1. **Hello World** — sanity check that the model is wired up and can produce code
+1. **Prime Number Check** — a quick baseline test of clean, direct code 
+   generation on a simple, self-contained problem
 2. **Sensor Drift Simulation** — models long-term sensor drift (0.001 × full 
    scale per year) as a random walk against a steady 500 PSI reading over a 
    simulated year, plotted in a Jupyter notebook

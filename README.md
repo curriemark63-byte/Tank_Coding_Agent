@@ -10,14 +10,12 @@ Tank is not yet wired into an agent framework (e.g. OpenClaude) — this repo cu
 
 Tank runs locally via Ollama on Qwen 2.5 Coder 7B.
 
-Interfaces via a custom chat script, tank_chat.py, with three modes:
+Interfaces via a custom chat script, `tank_chat.py`, with three modes:
+- **code** — direct, runnable code output
+- **teach** — conceptual explanations of the "why," not just the code
+- **engineering** — electro-hydraulic servo valve topics (sensors, torque motors, flow/pressure characteristics, drift/anomaly detection) and data center engineering topics (thermal monitoring, cooling, power monitoring)
 
-code — direct, runnable code output
-teach — conceptual explanations of the "why," not just the code
-engineering — electro-hydraulic servo valve topics (sensors, torque motors, flow/pressure characteristics, drift/anomaly detection) and data center engineering topics (thermal monitoring, cooling, power monitoring)
-
-Tank also has live web search, via a dedicated local SearXNG instance (tank_search.py), used automatically when a query needs current documentation, datasheets, standards, or other technical information that shouldn't be pulled from training data alone.
-
+Tank also has live web search, via a dedicated local SearXNG instance (`tank_search.py`), used automatically when a query needs current documentation, datasheets, standards, or other technical information that shouldn't be pulled from training data alone.
 
 ## Test Methodology
 

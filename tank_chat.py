@@ -16,9 +16,23 @@ When you need current documentation or examples, you will be given live search
 results to reference. Focus on explaining the "why" behind the code, not just 
 producing it."""
 
+ENGINEERING_SYSTEM_PROMPT = """You are Tank, a local engineering research assistant. 
+You help with electro-hydraulic servo valve design topics (sensors, actuators, 
+torque motors, flow/pressure characteristics, anomaly detection, sensor drift) 
+and data center engineering topics (thermal monitoring, cooling systems, power 
+monitoring). When you need current technical data, you will be given live search 
+results (datasheets, standards, technical reports) to reference. Ground your 
+answers in that real data rather than guessing at parameters, and be clear about 
+what is sourced from search results versus general knowledge."""
+
 NEEDS_SEARCH_KEYWORDS = [
     "latest", "current", "newest", "version", "update", "changelog",
-    "documentation", "docs", "release", "deprecated", "new feature"
+    "documentation", "docs", "release", "deprecated", "new feature",
+    "servo valve", "servovalve", "sensor", "datasheet", "data sheet",
+    "torque motor", "flapper", "nozzle", "spool", "flow gain", "pressure gain",
+    "hysteresis", "drift", "anomaly", "predictive failure",
+    "data center", "datacenter", "thermal", "cooling", "power monitoring",
+    "standard", "spec", "specification"
 ]
 
 def needs_search(user_input):
@@ -26,7 +40,12 @@ def needs_search(user_input):
     return any(keyword in lowered for keyword in NEEDS_SEARCH_KEYWORDS)
 
 def ask_tank(user_input, mode="code"):
-    system_prompt = CODE_SYSTEM_PROMPT if mode == "code" else TEACH_SYSTEM_PROMPT
+    if mode == "code":
+        system_prompt = CODE_SYSTEM_PROMPT
+    elif mode == "teach":
+        system_prompt = TEACH_SYSTEM_PROMPT
+    else:
+        system_prompt = ENGINEERING_SYSTEM_PROMPT
 
     if needs_search(user_input):
         search_results = search_web(user_input)
@@ -51,7 +70,7 @@ def ask_tank(user_input, mode="code"):
 
 if __name__ == "__main__":
     mode = "code"
-    print("Tank is online. Type mode:code or mode:teach to switch modes. Type quit to exit.\n")
+    print("Tank is online. Type mode:code, mode:teach, or mode:engineering to switch modes. Type quit to exit.\n")
     while True:
         user_input = input("You: ")
         if user_input.lower() == "quit":
@@ -63,6 +82,10 @@ if __name__ == "__main__":
         if user_input.lower() in ("mode: teach", "mode:teach"):
             mode = "teach"
             print("\nSwitched to teach mode.\n")
+            continue
+        if user_input.lower() in ("mode: engineering", "mode:engineering"):
+            mode = "engineering"
+            print("\nSwitched to engineering mode.\n")
             continue
         answer = ask_tank(user_input, mode=mode)
         print(f"\nTank: {answer}\n")

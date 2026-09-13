@@ -6,7 +6,7 @@ for engineering and R&D work. This repo documents a structured evaluation
 of Tank's raw coding capability before wrapping it in agent tooling.
 ## Setup
 
-Tank is not yet wired into an agent framework (e.g. OpenClaude) — this repo currently documents Tank's raw coding capability, plus its supporting search infrastructure, ahead of that step.
+Tank is not yet wired into an agent framework (e.g. OpenClaw) — this repo currently documents Tank's raw coding capability, plus its supporting search infrastructure, ahead of that step.
 
 Tank runs locally via Ollama on Qwen 2.5 Coder 7B.
 

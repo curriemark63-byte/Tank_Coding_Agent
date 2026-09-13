@@ -4,15 +4,20 @@ Tank is a local coding assistant running via Ollama on Qwen 2.5 Coder 7B,
 built and evaluated as part of a broader project exploring self-hosted LLMs 
 for engineering and R&D work. This repo documents a structured evaluation 
 of Tank's raw coding capability before wrapping it in agent tooling.
-
 ## Setup
 
-- Model: `qwen2.5-coder:7b`, served locally via Ollama
-- Interface: custom `tank_chat.py` script with two modes — **code** (direct, 
-  output-only) and **teach** (explanatory) — plus conditional web search via 
-  `tank_search.py`, triggered only when a prompt needs current documentation
-- Not yet wired into an agent framework (e.g. OpenClaude); this phase tests 
-  the base model's coding ability in isolation
+Tank is not yet wired into an agent framework (e.g. OpenClaude) — this repo currently documents Tank's raw coding capability, plus its supporting search infrastructure, ahead of that step.
+
+Tank runs locally via Ollama on Qwen 2.5 Coder 7B.
+
+Interfaces via a custom chat script, tank_chat.py, with three modes:
+
+code — direct, runnable code output
+teach — conceptual explanations of the "why," not just the code
+engineering — electro-hydraulic servo valve topics (sensors, torque motors, flow/pressure characteristics, drift/anomaly detection) and data center engineering topics (thermal monitoring, cooling, power monitoring)
+
+Tank also has live web search, via a dedicated local SearXNG instance (tank_search.py), used automatically when a query needs current documentation, datasheets, standards, or other technical information that shouldn't be pulled from training data alone.
+
 
 ## Test Methodology
 
